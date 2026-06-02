@@ -67,6 +67,7 @@ if choice == '1':
     def hop_gen():
         global hops # makes sure to use the hops that every other block is using.
 
+
         while running:
             time.sleep(hop_interval)
 
@@ -76,6 +77,7 @@ if choice == '1':
             # hops is the total points / multiplier is what gives the points
             hops += multiplier * prestige_bonus
 
+            # a lucky hop event that rewards points that scales with upgrades 
             hops_events = random.randint(1,10)
             if hops_events == 5:
                 hops_events = 10 * multiplier
