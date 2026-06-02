@@ -15,7 +15,7 @@ def singleTyping(text, delay=0.1):
 singleTyping("-------------------------------------\n", delay=0.02)
 singleTyping("Honey the Bunny: Back From the Burrow\n")
 singleTyping("-------------------------------------\n", delay=0.02)
-singleTyping("(\_/)\n")
+singleTyping("(\_/) ᶻᶻᶻ\n")
 singleTyping("(-_-)\n")
 singleTyping("/ >🥕\n\n")
 singleTyping("1. Play The Game\n")
@@ -36,7 +36,7 @@ if choice == '1':
     print("----------------")
     print("Honey The Bunny")
     print("----------------")
-    print("(\_/)")
+    print("(\_/)︕︕︕")
     print("(•_•)")
     print("/ >🥕")
 
@@ -44,7 +44,7 @@ if choice == '1':
     time.sleep(1.5)
 
     # The main points system (keeps track of hops)
-    hops = 1000
+    hops = 1
 
     # multiplier upgrade variables
     multiplier = 1.0
@@ -79,7 +79,7 @@ if choice == '1':
             hops_events = random.randint(1,10)
             if hops_events == 5:
                 hops_events = 10 * multiplier
-                print("You got +10 Bonus Hops! Lucky!")
+                print(f"You got {hops_events} Bonus Hops! Lucky!")
                 hops += hops_events
             
 
@@ -91,8 +91,8 @@ if choice == '1':
             print("----------------")
             print("Honey The Bunny")
             print("----------------")
-            print("(\_/)")
-            print("(•_•)")
+            print("(\_/) ✨!")
+            print("(•ᴗ•)")
             print("/ >🥕\n")
 
             # displays current player stats
@@ -107,9 +107,8 @@ if choice == '1':
             print("----------------")
             print("Bug's Hop Shop")
             print("----------------")
-            print("/\_/\\")
-            print("(•v•)")
-            print("/|_|_\\")
+            print("/╲/\\╭(•‿•)╮/\\╱\\")
+            print()
             # multiplier upgrade display
             print(f"1) Multiplier Upgrade - Level {multiplier_level} - Cost: {multiplier_cost} hops")
             print("   +0.5 multiplier each purchase")
