@@ -1,6 +1,7 @@
 import os
 import threading # necessary for concurrent hopping and UI updates
 import time
+import random 
 
 os.system('cls||clear')
 
@@ -36,7 +37,7 @@ if choice == '1':
     print("Honey The Bunny")
     print("----------------")
     print("(\_/)")
-    print("(x_x)")
+    print("(•_•)")
     print("/ >🥕")
 
     singleTyping("\nI am ready to hop!", delay=0.1)
@@ -75,6 +76,13 @@ if choice == '1':
             # hops is the total points / multiplier is what gives the points
             hops += multiplier * prestige_bonus
 
+            hops_events = random.randint(1,10)
+            if hops_events == 5:
+                hops_events = 10 * multiplier
+                print("You got +10 Bonus Hops! Lucky!")
+                hops += hops_events
+            
+
     # Threaded function for UI generation (goes on forever until the program is exited)
     def ui_gen():
         while running:
@@ -84,7 +92,7 @@ if choice == '1':
             print("Honey The Bunny")
             print("----------------")
             print("(\_/)")
-            print("(x_x)")
+            print("(•_•)")
             print("/ >🥕\n")
 
             # displays current player stats
@@ -184,5 +192,7 @@ elif choice == '2':
     singleTyping("Credits", delay=0.1)
     singleTyping("\n---------", delay=0.05)
     singleTyping("\nDeveloper - Brian Le", delay=0.05)
+    singleTyping("\nProject began in early 2026")
     singleTyping("\nResources - Stack Overflow", delay=0.05)
     singleTyping("\n~1/11/26", delay=0.05)
+    singleTyping("Last Updated: 6/1/2026")
