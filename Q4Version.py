@@ -62,11 +62,16 @@ if choice == '1':
     # hop generation variables
     hop_interval = 2.5
     running = True
+    
+    # relic variables 
+    relic_found = False # SHOULD prevent the relic from being found more than once 
+    relic_bonus = 1 # default multiplier, change later to 25 if found
 
     # Function for hop generation
     def hop_gen():
-        global hops # makes sure to use the hops that every other block is using.
-
+        global hops 
+        global relic_found
+        global relic_bonus
 
         while running:
             time.sleep(hop_interval)
@@ -74,15 +79,30 @@ if choice == '1':
             # permanent prestige bonus (+10% per prestige)
             prestige_bonus = 1 + (prestige_points * 0.1)
 
-            # hops is the total points / multiplier is what gives the points
-            hops += multiplier * prestige_bonus
+            # hops is the total points / multiplier is what gives the points / prestige_bonus is another multiplier / relic_bonus should be 25x as well 
+            hops += multiplier * prestige_bonus * relic_bonus
 
-            # a lucky hop event that rewards points that scales with upgrades 
-            hops_events = random.randint(1,10)
+            # a lucky hop event that rewards points that scales with upgrades
+            hops_events = random.randint(1, 10)
+
             if hops_events == 5:
                 hops_events = 10 * multiplier
-                print(f"You got {hops_events} Bonus Hops! Lucky!")
+                print(f"\nYou got {int(hops_events)} Bonus Hops! Lucky!")
                 hops += hops_events
+
+            # relic event (1 in 250 chance)
+            if not relic_found:
+
+                relic_roll = random.randint(1, 250)
+
+                if relic_roll == 100:
+
+                    relic_found = True
+                    relic_bonus = 25 # 25x multiplier 
+
+                    print("\n✨ LEGENDARY RELIC FOUND! ✨")
+                    print("Ancient Carrot of Hopping obtained!")
+                    print("All hop gains are now multiplied by 25 by the relic!")
             
 
     # Threaded function for UI generation (goes on forever until the program is exited)
@@ -96,7 +116,9 @@ if choice == '1':
             print("(\_/) ✨!")
             print("(•ᴗ•)")
             print("/ >🥕\n")
-
+            
+            if relic_found:
+                print("🌟 RELIC ACTIVE 🌟") # displays that the relic is active upon receiving it 
             # displays current player stats
             print(f"Hops: {int(hops)}")
             print(f"Multiplier: x{round(multiplier, 1)}")
@@ -104,8 +126,14 @@ if choice == '1':
 
             # displays prestige information
             print(f"Prestige Points: {prestige_points}")
-            print(f"Prestige At: {prestige_requirement} hops\n")
+            print(f"Prestige At: {prestige_requirement} hops")
 
+            if relic_found:
+                print("Relic: Ancient Carrot 🥕✨ (x25)") # displays the relic name and its multiplier 
+            else:
+                print("Relic: None")
+
+            print()
             print("----------------")
             print("Bug's Hop Shop")
             print("----------------")
@@ -117,7 +145,7 @@ if choice == '1':
 
             # speed upgrade display
             print(f"2) Speed Upgrade - Level {speed_level} - Cost: {speed_cost} hops")
-            print("   -0.1s interval each purchase (min 1s)")
+            print("   -0.1s interval each purchase (max 1s)")
 
             # prestige upgrade display
             print("3) Prestige")
@@ -158,7 +186,7 @@ if choice == '1':
                 # awards prestige point
                 prestige_points += 1
 
-                # resets player progress
+                # reset player progress
                 hops = 0
 
                 multiplier = 1.0
@@ -197,5 +225,4 @@ elif choice == '2':
     singleTyping("\nDeveloper - Brian Le", delay=0.05)
     singleTyping("\nProject began in early 2026")
     singleTyping("\nResources - Stack Overflow", delay=0.05)
-    singleTyping("\n~1/11/26", delay=0.05)
-    singleTyping("Last Updated: 6/1/2026")
+    singleTyping("\nLast Updated: 6/3/2026")
