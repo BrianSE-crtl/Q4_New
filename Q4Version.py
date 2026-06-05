@@ -89,20 +89,6 @@ if choice == '1':
                 hops_events = 10 * multiplier
                 print(f"\nYou got {int(hops_events)} Bonus Hops! Lucky!")
                 hops += hops_events
-
-            # relic event (1 in 250 chance)
-            if not relic_found:
-
-                relic_roll = random.randint(1, 250)
-
-                if relic_roll == 100:
-
-                    relic_found = True
-                    relic_bonus = 25 # 25x multiplier 
-
-                    print("\n✨ LEGENDARY RELIC FOUND! ✨")
-                    print("Ancient Carrot of Hopping obtained!")
-                    print("All hop gains are now multiplied by 25 by the relic!")
             
 
     # Threaded function for UI generation (goes on forever until the program is exited)
